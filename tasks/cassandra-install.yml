@@ -1,0 +1,5 @@
+- name: installing cassandra
+  apt: pkg=cassandra state=installed update-cache=yes
+
+- name: configuring cassandra
+  template: src=templates/cassandra.yaml dest=/etc/cassandra/cassandra.yaml

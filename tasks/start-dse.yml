@@ -1,2 +1,0 @@
-- name: starting dse
-  service: name=dse enabled=yes state=started

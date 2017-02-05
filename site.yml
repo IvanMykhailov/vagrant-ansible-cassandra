@@ -1,11 +1,14 @@
 ---
-- hosts: [ "node1", "node2", "node3" ]
+- hosts: ["node1"]
   user: vagrant
   become: yes
+  
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+    
   tasks:
-
   - include: tasks/dependencies.yml
   - include: tasks/repositories.yml
   - include: tasks/java-install.yml
-  - include: tasks/dse-install.yml
-  - include: tasks/start-dse.yml
+  - include: tasks/cassandra-install.yml
+  - include: tasks/start-cassandra.yml

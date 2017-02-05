@@ -6,3 +6,6 @@
   with_items:
   - curl
   - htop
+  - httpie
+  - mc
+  

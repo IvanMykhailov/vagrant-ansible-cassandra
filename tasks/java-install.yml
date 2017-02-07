@@ -2,4 +2,9 @@
   shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 
 - name: installing oracle java
-  shell: DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer oracle-java8-set-default
+  apt:
+    pkg: 
+      - oracle-java8-installer
+      - oracle-java8-set-default
+    state: installed
+    #DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer oracle-java8-set-default

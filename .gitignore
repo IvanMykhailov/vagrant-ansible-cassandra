@@ -1,2 +1,3 @@
 .vagrant/
 tasks/opscenter.retry
+*.log

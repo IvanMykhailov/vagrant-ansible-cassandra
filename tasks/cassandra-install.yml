@@ -1,5 +1,17 @@
-- name: installing cassandra
-  apt: pkg=cassandra state=installed update-cache=yes
+- name: create cassandra config dir
+  file: 
+    path: /etc/cassandra
+    state: directory
 
 - name: configuring cassandra
   template: src=templates/cassandra.yaml dest=/etc/cassandra/cassandra.yaml
+  
+- name: installing cassandra
+  apt: pkg=cassandra state=installed update-cache=yes
+
+
+#- name: remove cassandra initil data
+#  when: !cassandra_installed
+#  file:
+#    state: absent
+#    path: "/var/lib/cassandra/data/*"

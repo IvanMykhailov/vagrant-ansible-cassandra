@@ -5,28 +5,19 @@
   retries: 5
   delay: 5
 
-#- name: adding dse repo
-#  shell: echo "deb http://datastaxrepo_gmail.com:utJVKEg4lKeaWTX@debian.datastax.com/enterprise stable main" | sudo tee -a /etc/apt/sources.list.d/datastax.sources.list
-#  register: dse_repo
-#  until: dse_repo|success
-#  retries: 5
-#  delay: 5
-
-#- name: adding repo key
-#  apt_key: url=https://debian.datastax.com/debian/repo_key state=present
-#  register: dse_key
-#  until: dse_key|success
-#  retries: 5
-#  delay: 5
+- name: add cassandra repo keys
+  apt_key:
+    url: "https://www.apache.org/dist/cassandra/KEYS"
+    state: present
+ 
+- name: add cassandra repo keys, step2
+  apt_key:
+    keyserver: pool.sks-keyservers.net
+    id: A278B781FE4B2BDA
 
 - name: add cassandra repo
   apt_repository:
     repo: deb http://www.apache.org/dist/cassandra/debian 39x main
-    state: present
-    
-- name: add cassandra repo keys
-  apt_key:
-    url: "https://www.apache.org/dist/cassandra/KEYS"
     state: present
 
 - name: updating machine

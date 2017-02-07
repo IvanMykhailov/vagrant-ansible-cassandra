@@ -1,7 +1,9 @@
-[cassandra-db]
-node1 192.168.56.11
-#node2 192.168.56.12
-#node3 192.168.56.13
+cassandra-db:
+  hosts:
+    node1:
+    node2:
+    node3:
 
-[opscenter]
-opscenter 192.168.56.14
+opscenter:
+  hosts:
+    opscenter
